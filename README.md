@@ -103,3 +103,5 @@ For this SSO implementation, Gitlab omnibus package is used. But the source pack
     sudo gitlab-ctl reconfigure
    ```
 10. Go to http://localhost:3000 and under the Sign in button there will be another login named `Company Login`. That is the SAML SSO configured button and once clicked it will redirect the user to Keycloak authentication page and once the user provides the credentials and Login user will be redirected to Gitlab as a registered user.
+
+NOTE : The given gitlab.rb file is the configuration used in this setup and that is only an example. Refer it while going through the README to get a better understanding.
