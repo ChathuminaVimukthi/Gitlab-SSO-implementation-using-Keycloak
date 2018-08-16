@@ -4,10 +4,10 @@
 
 - Keycloak server should be up and running
     - By default Keycloak will start on http://localhost:8180
-    - To install and configure Keycloak visit www.keycloak.org/docs/latest/getting_started/index.html 
+    - To install and configure Keycloak visit [https://www.keycloak.org/docs/latest/getting_started/index.html] 
 - Gitlab must be installed locally
     - By default Gitlab starts on http://localhost:3000
-    - To install and configure Gitlab visit https://docs.gitlab.com/omnibus/manual_install.html
+    - To install and configure Gitlab visit [https://docs.gitlab.com/omnibus/manual_install.html]
 
 
 ## Environment
