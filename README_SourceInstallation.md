@@ -82,6 +82,6 @@ For this SSO implementation, Gitlab omnibus package is used. But the source pack
                         },
                    label: 'Company Login' # optional label for SAML login button, defaults to "Saml"
                  }
-        ```
+      ```
 9. Save the `gitlab.yml` file and close it.
 10. Restart the gitlab service.
