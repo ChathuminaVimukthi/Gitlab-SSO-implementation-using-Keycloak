@@ -17,12 +17,14 @@ For this SSO implementation, Gitlab omnibus package is used. But the source pack
      host: localhost
      port: 80
     ```
-4. Now create a client in Keycloak by login to the Keycloak admin console which can be found on http://localhost:8180 by default.First,
+4. Install Keycloak using [https://www.keycloak.org/docs/latest/getting_started/index.html]
+
+5. After installing Keycloak, now create a client in Keycloak by login to the Keycloak admin console which can be found on http://localhost:8180 by default.First,
     - Create a realm 
     - Inside the realm console create a client and give the client id as http://localhost:3000 which is the Gitlab host address.
     - Client protocol should be `saml`.
     - Leave client end-point as blank and save it.
-5. Now create the mappers for the authentication.Mappers, as the name may suggest, allow you to map user information to parameters in the SAML 2.0 request for GitLab. An example would be to map the Username into the request for GitLab.
+6. Now create the mappers for the authentication.Mappers, as the name may suggest, allow you to map user information to parameters in the SAML 2.0 request for GitLab. An example would be to map the Username into the request for GitLab.
     - Click on the client id in the client list.
     - Go to `Mappers` tab in Client console and click create.
     - Then create the mappers as bellow.
@@ -51,12 +53,12 @@ For this SSO implementation, Gitlab omnibus package is used. But the source pack
             - SAML Attribute Name: name
             - SAML Attribute NameFormat: Basic
 
-6. Now get the `dsig:X509Certificate` for the created client. To get the certificate,
+7. Now get the `dsig:X509Certificate` for the created client. To get the certificate,
     - Go to `Installation` tab in Client console.
     - Choose the format as `SAML Metadata IDPSSODescriptor` and the xml file will appear with a download button.
     - Inside the xml find the tag `<dsig:X509Certificate>` and extract the content inside the tags. This `certificate id` is used in Gitlab config file.
    
-7. Again in the Gitlab configuration file opened in the editor, copy the bellow snippet to the config file. There in the `idp_cert` replace only the `X509Certificate` with the copied `certificate id` in the previous step (do not exclude the `\n\n`).
+8. Again in the Gitlab configuration file opened in the editor, copy the bellow snippet to the config file. There in the `idp_cert` replace only the `X509Certificate` with the copied `certificate id` in the previous step (do not exclude the `\n\n`).
     - `assertion_consumer_service_url` should be your Github host url. (http://github.host.url/users/auth/saml/callback)
     - `idp_sso_target_url` should be your Keycloak host url.And replace the realmName with the realm you created in the previous steps.  (http://keycloak.host.url/auth/realms/realmName/protocol/saml)
     - `issuer` and the Keycloak client Id must be identical.
@@ -81,5 +83,5 @@ For this SSO implementation, Gitlab omnibus package is used. But the source pack
                    label: 'Company Login' # optional label for SAML login button, defaults to "Saml"
                  }
         ```
-8. Save the `gitlab.yml` file and close it.
-9. Restart the gitlab service.
+9. Save the `gitlab.yml` file and close it.
+10. Restart the gitlab service.
